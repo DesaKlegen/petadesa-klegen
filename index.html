@@ -4,11 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Peta Desa Klegen</title>
+<title>Peta Administrasi Desa Klegen</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================
+RESET
+========================= */
 
 *{
 margin:0;
@@ -19,19 +26,19 @@ scroll-behavior:smooth;
 
 body{
 font-family:'Poppins',sans-serif;
-background:#f4f7f5;
+background:#f5f7fa;
 color:#333;
-line-height:1.6;
-}
-
-a{
-text-decoration:none;
-color:inherit;
+line-height:1.7;
+overflow-x:hidden;
 }
 
 img{
 max-width:100%;
 display:block;
+}
+
+a{
+text-decoration:none;
 }
 
 .container{
@@ -40,26 +47,29 @@ max-width:1200px;
 margin:auto;
 }
 
-/*======================
+section{
+padding:80px 0;
+}
+
+/* =========================
 NAVBAR
-=======================*/
+========================= */
 
 nav{
 position:fixed;
 top:0;
 left:0;
 width:100%;
-background:rgba(34,94,46,.95);
-backdrop-filter:blur(10px);
+background:#2E7D32;
+box-shadow:0 5px 20px rgba(0,0,0,.15);
 z-index:999;
-box-shadow:0 4px 15px rgba(0,0,0,.2);
 }
 
-.nav-container{
+.navbar{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 0;
+padding:16px 0;
 }
 
 .logo{
@@ -80,560 +90,325 @@ transition:.3s;
 }
 
 .menu a:hover{
-color:#ffd54f;
+color:#FFD54F;
 }
 
-/*======================
+/* =========================
 HERO
-=======================*/
+========================= */
 
 .hero{
-
-margin-top:70px;
-
-background:linear-gradient(135deg,#2e7d32,#4caf50);
-
-color:white;
-
-padding:80px 20px;
-
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 text-align:center;
-
-position:relative;
-
-overflow:hidden;
-
+background:linear-gradient(135deg,#2E7D32,#43A047);
+color:white;
+padding:20px;
+margin-top:70px;
 }
 
 .hero h1{
-
-font-size:48px;
-
-margin-bottom:15px;
-
+font-size:56px;
+margin-bottom:20px;
 }
 
 .hero p{
-
-font-size:18px;
-
-max-width:750px;
-
+max-width:760px;
 margin:auto;
-
-opacity:.95;
-
+font-size:18px;
 }
 
-.button-area{
-
+.button-group{
 margin-top:35px;
-
 display:flex;
-
 justify-content:center;
-
-gap:20px;
-
+gap:15px;
 flex-wrap:wrap;
-
 }
 
 .btn{
-
-padding:14px 28px;
-
+padding:14px 30px;
 border-radius:50px;
-
 font-weight:600;
-
 transition:.3s;
-
 }
 
 .btn-primary{
-
 background:white;
-
-color:#2e7d32;
-
+color:#2E7D32;
 }
 
 .btn-primary:hover{
-
-transform:translateY(-3px);
-
+transform:translateY(-4px);
 box-shadow:0 10px 25px rgba(0,0,0,.2);
-
 }
 
 .btn-outline{
-
 border:2px solid white;
-
 color:white;
-
 }
 
 .btn-outline:hover{
-
 background:white;
-
-color:#2e7d32;
-
+color:#2E7D32;
 }
 
-.wave{
+/* =========================
+JUDUL
+========================= */
 
-position:absolute;
-
-bottom:0;
-
-left:0;
-
-width:100%;
-
-}
-
-/*======================
-SECTION
-=======================*/
-
-section{
-
-padding:70px 0;
-
-}
-
-.section-title{
-
+.title{
 text-align:center;
-
-font-size:34px;
-
+font-size:36px;
+color:#2E7D32;
 margin-bottom:10px;
-
-color:#2e7d32;
-
 }
 
-.section-sub{
-
+.subtitle{
 text-align:center;
-
 color:#666;
-
-margin-bottom:45px;
-
+margin-bottom:40px;
 }
 
-/*======================
+/* =========================
 CARD
-=======================*/
+========================= */
 
 .card{
-
 background:white;
-
 border-radius:18px;
-
 padding:25px;
-
 box-shadow:0 10px 30px rgba(0,0,0,.08);
-
 transition:.4s;
-
 }
 
 .card:hover{
-
 transform:translateY(-8px);
-
 }
 
 .grid{
-
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
 gap:25px;
-
 }
-
-/*======================
+    /* =========================
 PETA
-=======================*/
+========================= */
 
 .map-card{
-
 overflow:hidden;
-
 }
 
 .map-card img{
-
+width:100%;
 border-radius:15px;
-
 cursor:pointer;
-
-transition:.5s;
-
+transition:.4s;
 }
 
 .map-card img:hover{
-
-transform:scale(1.03);
-
+transform:scale(1.02);
 }
 
 .download{
-
 margin-top:25px;
-
 display:flex;
-
 justify-content:center;
-
 gap:15px;
-
 flex-wrap:wrap;
-
 }
 
 .download a{
-
 padding:12px 24px;
-
-background:#2e7d32;
-
+background:#2E7D32;
 color:white;
-
 border-radius:8px;
-
 font-weight:600;
-
 transition:.3s;
-
 }
 
 .download a:hover{
-
-background:#1b5e20;
-
+background:#1B5E20;
 }
 
-/*======================
-STATISTIK
-=======================*/
-
-.stat{
-
-text-align:center;
-
-padding:30px;
-
-}
-
-.stat h2{
-
-font-size:42px;
-
-color:#2e7d32;
-
-}
-
-.stat p{
-
-margin-top:10px;
-
-color:#666;
-
-}
-
-/*======================
-GALERI
-=======================*/
-
-.gallery{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-gap:20px;
-
-}
-
-.gallery img{
-
-height:220px;
-
-object-fit:cover;
-
-border-radius:15px;
-
-transition:.4s;
-
-}
-
-.gallery img:hover{
-
-transform:scale(1.05);
-
-}
-/*======================
+/* =========================
 PROFIL
-=======================*/
+========================= */
 
 .profile{
-
 display:grid;
-
 grid-template-columns:1.2fr .8fr;
-
-gap:30px;
-
+gap:35px;
 align-items:center;
-
 }
 
 .profile img{
-
-border-radius:20px;
-
+border-radius:18px;
 box-shadow:0 10px 25px rgba(0,0,0,.15);
-
 }
 
 .profile p{
-
 text-align:justify;
-
-color:#555;
-
-line-height:1.8;
-
+margin-bottom:20px;
 }
 
 .profile ul{
-
-margin-top:20px;
-
 padding-left:20px;
-
 }
 
 .profile li{
-
 margin-bottom:10px;
-
 }
 
-/*======================
+/* =========================
 POTENSI
-=======================*/
-
-.potensi{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-gap:25px;
-
-}
-
-.potensi .card{
-
-text-align:center;
-
-}
+========================= */
 
 .icon{
-
 font-size:55px;
-
 margin-bottom:15px;
-
 }
 
-/*======================
+.potensi{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+text-align:center;
+}
+
+/* =========================
+GALERI
+========================= */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:15px;
+cursor:pointer;
+transition:.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+/* =========================
 KONTAK
-=======================*/
+========================= */
 
 .contact{
-
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
 gap:25px;
-
-}
-
-.contact .card{
-
 text-align:center;
-
 }
 
-.contact h3{
-
-margin:15px 0;
-
-color:#2e7d32;
-
-}
-
-/*======================
+/* =========================
 FOOTER
-=======================*/
+========================= */
 
 footer{
-
-background:#1b4332;
-
+background:#1B4332;
 color:white;
-
 padding:50px 20px;
-
 text-align:center;
+}
 
-margin-top:70px;
-
+footer h2{
+margin-bottom:10px;
 }
 
 footer p{
-
 opacity:.9;
-
-margin-top:10px;
-
+margin-top:8px;
 }
 
-/*======================
-BACK TO TOP
-=======================*/
-
-#topBtn{
-
-position:fixed;
-
-right:25px;
-
-bottom:25px;
-
-width:55px;
-
-height:55px;
-
-border:none;
-
-border-radius:50%;
-
-background:#2e7d32;
-
-color:white;
-
-font-size:22px;
-
-cursor:pointer;
-
-display:none;
-
-box-shadow:0 8px 20px rgba(0,0,0,.3);
-
-transition:.3s;
-
-}
-
-#topBtn:hover{
-
-background:#1b5e20;
-
-transform:translateY(-5px);
-
-}
-
-/*======================
+/* =========================
 LIGHTBOX
-=======================*/
+========================= */
 
 #popup{
-
 display:none;
-
 position:fixed;
-
-top:0;
-
 left:0;
-
+top:0;
 width:100%;
-
 height:100%;
-
-background:rgba(0,0,0,.92);
-
+background:rgba(0,0,0,.9);
 justify-content:center;
-
 align-items:center;
-
 z-index:9999;
-
 }
 
 #popup img{
-
 max-width:92%;
-
 max-height:90%;
-
-border-radius:15px;
-
-box-shadow:0 15px 40px rgba(0,0,0,.5);
-
+border-radius:12px;
 }
 
 #close{
-
 position:absolute;
-
+right:30px;
 top:20px;
-
-right:35px;
-
 font-size:45px;
-
 color:white;
-
 cursor:pointer;
-
 }
 
-/*======================
+/* =========================
+BACK TO TOP
+========================= */
+
+#topBtn{
+position:fixed;
+right:25px;
+bottom:25px;
+width:55px;
+height:55px;
+border:none;
+border-radius:50%;
+background:#2E7D32;
+color:white;
+font-size:22px;
+cursor:pointer;
+display:none;
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+/* =========================
 RESPONSIVE
-=======================*/
+========================= */
 
 @media(max-width:900px){
 
-.profile{
+.menu{
+display:none;
+}
 
-grid-template-columns:1fr;
-
+.hero{
+height:auto;
+padding:100px 20px;
 }
 
 .hero h1{
-
-font-size:36px;
-
+font-size:38px;
 }
 
-.menu{
+.profile{
+grid-template-columns:1fr;
+}
 
-display:none;
-
+.title{
+font-size:30px;
 }
 
 }
@@ -646,22 +421,19 @@ display:none;
 
 <nav>
 
-<div class="container nav-container">
+<div class="container navbar">
 
-<div class="logo">🏡 Desa Klegen</div>
+<div class="logo">
+🏡 Desa Klegen
+</div>
 
 <div class="menu">
 
 <a href="#beranda">Beranda</a>
-
 <a href="#peta">Peta</a>
-
 <a href="#profil">Profil</a>
-
 <a href="#potensi">Potensi</a>
-
 <a href="#galeri">Galeri</a>
-
 <a href="#kontak">Kontak</a>
 
 </div>
@@ -678,63 +450,46 @@ display:none;
 
 <p>
 
-Website ini dibuat sebagai media informasi digital Desa Klegen
-
-dalam kegiatan Kuliah Kerja Nyata (KKN).
+Website informasi digital Desa Klegen, Kecamatan Grabag,
+Kabupaten Magelang. Website ini dibuat sebagai media
+informasi untuk mempermudah masyarakat melihat peta
+administrasi desa dan mengenal potensi Desa Klegen.
 
 </p>
 
-<div class="button-area">
+<div class="button-group">
 
 <a href="#peta" class="btn btn-primary">
-
-🗺 Lihat Peta
-
+🗺️ Lihat Peta
 </a>
 
 <a href="Desa klegen.png" download class="btn btn-outline">
-
-⬇ Download Peta
-
+⬇️ Download Peta
 </a>
 
 </div>
 
 </div>
 
-<svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-
-<path fill="#f4f7f5" fill-opacity="1"
-
-d="M0,224L60,229.3C120,235,240,245,360,224C480,203,600,149,720,144C840,139,960,181,1080,202.7C1200,224,1320,224,1380,224L1440,224L1440,320L0,320Z">
-
-</path>
-
-</svg>
-
 </section>
-    <section id="peta">
+<section id="peta">
 
 <div class="container">
 
-<h2 class="section-title">🗺 Peta Administrasi Desa</h2>
+<h2 class="title">🗺️ Peta Administrasi Desa Klegen</h2>
 
-<p class="section-sub">
-Klik gambar untuk memperbesar tampilan peta.
+<p class="subtitle">
+Peta administrasi Desa Klegen dapat diperbesar dengan mengklik gambar di bawah ini.
 </p>
 
 <div class="card map-card">
 
-<img src="Desa klegen.png" alt="Peta Desa Klegen" onclick="buka()">
+<img src="Desa klegen.png" alt="Peta Desa Klegen" onclick="bukaGambar(this.src)">
 
 <div class="download">
 
 <a href="Desa klegen.png" download>
-⬇ Download Peta
-</a>
-
-<a href="https://maps.google.com" target="_blank">
-📍 Google Maps
+⬇️ Download Peta
 </a>
 
 </div>
@@ -744,80 +499,45 @@ Klik gambar untuk memperbesar tampilan peta.
 </div>
 
 </section>
-
-
-<section>
-
-<div class="container">
-
-<h2 class="section-title">📊 Statistik Desa</h2>
-
-<p class="section-sub">
-Silakan ubah data berikut sesuai kondisi Desa Klegen.
-</p>
-
-<div class="grid">
-
-<div class="card stat">
-<h2>5</h2>
-<p>Dusun</p>
-</div>
-
-<div class="card stat">
-<h2>12</h2>
-<p>RT</p>
-</div>
-
-<div class="card stat">
-<h2>3.250</h2>
-<p>Penduduk</p>
-</div>
-
-<div class="card stat">
-<h2>320 Ha</h2>
-<p>Luas Wilayah</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
 
 <section id="profil">
 
 <div class="container">
 
-<h2 class="section-title">🏡 Profil Desa</h2>
+<h2 class="title">🏡 Profil Desa</h2>
 
-<p class="section-sub">
+<p class="subtitle">
 Informasi singkat mengenai Desa Klegen.
 </p>
 
-<div class="profile">
+<div class="card profile">
 
 <div>
 
 <p>
 
-Desa Klegen merupakan salah satu desa yang memiliki potensi
-di bidang pertanian, perkebunan, UMKM, dan kegiatan masyarakat
-yang aktif. Website ini dibuat sebagai media informasi digital
-agar masyarakat dapat mengakses peta administrasi desa dengan
-lebih mudah.
+Desa Klegen merupakan salah satu desa yang berada di Kecamatan Grabag,
+Kabupaten Magelang, Provinsi Jawa Tengah. Website ini dibuat sebagai
+media informasi digital agar masyarakat lebih mudah mengakses peta
+administrasi desa serta mengenal wilayah Desa Klegen.
 
 </p>
 
 <ul>
 
-<li>📍 Kecamatan : Isi sesuai kecamatan</li>
+<li><strong>Kecamatan :</strong> Grabag</li>
 
-<li>🏢 Kabupaten : Isi sesuai kabupaten</li>
+<li><strong>Kabupaten :</strong> Magelang</li>
 
-<li>🌾 Potensi : Pertanian, UMKM, Peternakan</li>
+<li><strong>Dusun :</strong>
+<ul>
+<li>Krajan</li>
+<li>Jlegong</li>
+<li>Gegunung</li>
+</ul>
+</li>
 
-<li>👨‍👩‍👧‍👦 Masyarakat yang aktif dalam pembangunan desa</li>
+<li><strong>Potensi :</strong> Pertanian dan Peternakan</li>
 
 </ul>
 
@@ -825,7 +545,7 @@ lebih mudah.
 
 <div>
 
-<img src="Desa klegen.png" alt="Profil Desa">
+<img src="Desa klegen.png" alt="Profil Desa Klegen">
 
 </div>
 
@@ -835,17 +555,90 @@ lebih mudah.
 
 </section>
 
+<section id="informasi">
+
+<div class="container">
+
+<h2 class="title">📊 Informasi Desa</h2>
+
+<p class="subtitle">
+Data singkat mengenai Desa Klegen.
+</p>
+
+<div class="grid">
+
+<div class="card">
+
+<div class="icon">🏘️</div>
+
+<h3>3 Dusun</h3>
+
+<p>
+
+Krajan<br>
+Jlegong<br>
+Gegunung
+
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">📍</div>
+
+<h3>Kecamatan</h3>
+
+<p>
+
+Grabag
+
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">🗺️</div>
+
+<h3>Kabupaten</h3>
+
+<p>
+
+Magelang
+
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">🌾</div>
+
+<h3>Potensi</h3>
+
+<p>
+
+Pertanian dan Peternakan
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
 
 <section id="potensi">
 
 <div class="container">
 
-<h2 class="section-title">🌾 Potensi Desa</h2>
+<h2 class="title">🌾 Potensi Desa</h2>
 
-<p class="section-sub">
-
+<p class="subtitle">
 Potensi unggulan Desa Klegen.
-
 </p>
 
 <div class="potensi">
@@ -858,23 +651,7 @@ Potensi unggulan Desa Klegen.
 
 <p>
 
-Lahan pertanian menjadi salah satu sektor utama
-penunjang perekonomian masyarakat.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<div class="icon">🛍</div>
-
-<h3>UMKM</h3>
-
-<p>
-
-Berbagai usaha mikro berkembang sebagai sumber
-pendapatan masyarakat.
+Sektor pertanian menjadi salah satu mata pencaharian utama masyarakat Desa Klegen dan berperan penting dalam mendukung perekonomian desa.
 
 </p>
 
@@ -888,23 +665,7 @@ pendapatan masyarakat.
 
 <p>
 
-Peternakan menjadi salah satu potensi yang
-terus dikembangkan.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<div class="icon">🌳</div>
-
-<h3>Lingkungan</h3>
-
-<p>
-
-Masyarakat menjaga kelestarian lingkungan dan
-ruang terbuka hijau desa.
+Peternakan merupakan salah satu potensi unggulan Desa Klegen yang terus dikembangkan untuk meningkatkan kesejahteraan masyarakat.
 
 </p>
 
@@ -915,108 +676,85 @@ ruang terbuka hijau desa.
 </div>
 
 </section>
-
-
 <section id="galeri">
 
 <div class="container">
 
-<h2 class="section-title">📸 Galeri KKN</h2>
+<h2 class="title">📸 Galeri Desa</h2>
 
-<p class="section-sub">
-
-Ganti gambar berikut dengan dokumentasi kegiatan KKN.
-
+<p class="subtitle">
+Dokumentasi peta dan kegiatan Desa Klegen.
 </p>
 
 <div class="gallery">
 
-<img src="Desa klegen.png">
+<img src="Desa klegen.png" alt="Galeri 1" onclick="bukaGambar(this.src)">
 
-<img src="Desa klegen.png">
+<img src="Desa klegen.png" alt="Galeri 2" onclick="bukaGambar(this.src)">
 
-<img src="Desa klegen.png">
+<img src="Desa klegen.png" alt="Galeri 3" onclick="bukaGambar(this.src)">
 
-<img src="Desa klegen.png">
-
-<img src="Desa klegen.png">
-
-<img src="Desa klegen.png">
+<img src="Desa klegen.png" alt="Galeri 4" onclick="bukaGambar(this.src)">
 
 </div>
 
 </div>
 
 </section>
-    <section id="kontak">
+
+<section id="kontak">
 
 <div class="container">
 
-<h2 class="section-title">📞 Kontak Desa</h2>
+<h2 class="title">📞 Informasi Desa</h2>
 
-<p class="section-sub">
-
-Silakan ubah informasi berikut sesuai data Pemerintah Desa Klegen.
-
+<p class="subtitle">
+Informasi administratif Desa Klegen.
 </p>
 
 <div class="contact">
 
 <div class="card">
 
-<div class="icon">🏢</div>
+<div class="icon">🏡</div>
 
-<h3>Kantor Desa</h3>
+<h3>Desa</h3>
 
-<p>
-
-Desa Klegen<br>
-
-Kecamatan .........<br>
-
-Kabupaten .........
-
-</p>
+<p>Desa Klegen</p>
 
 </div>
 
 <div class="card">
 
-<div class="icon">☎️</div>
+<div class="icon">📍</div>
 
-<h3>Telepon</h3>
+<h3>Kecamatan</h3>
 
-<p>
-
-(0351) XXXXXXX
-
-</p>
+<p>Grabag</p>
 
 </div>
 
 <div class="card">
 
-<div class="icon">✉️</div>
+<div class="icon">🗺️</div>
 
-<h3>Email</h3>
+<h3>Kabupaten</h3>
 
-<p>
-
-desaklegen@email.com
-
-</p>
+<p>Magelang</p>
 
 </div>
 
 <div class="card">
 
-<div class="icon">🌐</div>
+<div class="icon">🏘️</div>
 
-<h3>Website</h3>
+<h3>Dusun</h3>
 
 <p>
 
-https://desaklegen.github.io/petadesa-klegen/
+Krajan<br>
+Jlegong<br>
+Gegunung
 
 </p>
 
@@ -1028,77 +766,94 @@ https://desaklegen.github.io/petadesa-klegen/
 
 </section>
 
-
 <footer>
+
+<div class="container">
 
 <h2>🏡 Desa Klegen</h2>
 
 <p>
 
-Website Peta Administrasi Desa
+Website Peta Administrasi Desa Klegen
 
 </p>
 
 <p>
 
-Dikembangkan oleh Tim Kuliah Kerja Nyata (KKN)
+Kecamatan Grabag • Kabupaten Magelang
 
 </p>
 
 <p>
 
-© 2026 Desa Klegen. All Rights Reserved.
+© 2026 Tim Kuliah Kerja Nyata (KKN)
 
 </p>
-
-</footer>
-
-
-<div id="popup">
-
-<span id="close" onclick="tutup()">&times;</span>
-
-<img src="Desa klegen.png" id="popupImage">
 
 </div>
 
+</footer>
 
-<button id="topBtn" onclick="keAtas()">
+<!-- Popup Gambar -->
+
+<div id="popup">
+
+<span id="close" onclick="tutupGambar()">&times;</span>
+
+<img id="popupImage" src="" alt="Popup Peta">
+
+</div>
+
+<!-- Tombol Ke Atas -->
+
+<button id="topBtn" onclick="scrollAtas()">
 
 ↑
 
 </button>
-
-
 <script>
 
-function buka(){
+// ===============================
+// LIGHTBOX GAMBAR
+// ===============================
+
+function bukaGambar(src){
 
 document.getElementById("popup").style.display="flex";
 
+document.getElementById("popupImage").src=src;
+
 }
 
-function tutup(){
+function tutupGambar(){
 
 document.getElementById("popup").style.display="none";
 
 }
 
-window.onclick=function(e){
+window.onclick=function(event){
 
-if(e.target==document.getElementById("popup")){
+let popup=document.getElementById("popup");
 
-tutup();
+if(event.target==popup){
+
+popup.style.display="none";
 
 }
 
 }
+
+// ===============================
+// TOMBOL KE ATAS
+// ===============================
 
 let tombol=document.getElementById("topBtn");
 
 window.onscroll=function(){
 
-if(document.body.scrollTop>300||document.documentElement.scrollTop>300){
+if(document.body.scrollTop>300 ||
+
+document.documentElement.scrollTop>300){
 
 tombol.style.display="block";
 
@@ -1110,7 +865,7 @@ tombol.style.display="none";
 
 }
 
-function keAtas(){
+function scrollAtas(){
 
 window.scrollTo({
 
@@ -1121,6 +876,10 @@ behavior:"smooth"
 });
 
 }
+
+// ===============================
+// ANIMASI CARD
+// ===============================
 
 const cards=document.querySelectorAll(".card");
 
@@ -1146,7 +905,7 @@ card.style.opacity="0";
 
 card.style.transform="translateY(50px)";
 
-card.style.transition=".8s";
+card.style.transition="all .8s ease";
 
 observer.observe(card);
 
