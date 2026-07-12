@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peta Administrasi Desa Klegen</title>
+    <title>Peta Digital & Portal Informasi Desa Klegen</title>
 
-    <!-- Google Fonts & Remixicons -->
+    <!-- Google Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         /* =========================
-           RESET & CSS VARIABLES
+           VARIABLES & THEMES
         ========================= */
         :root {
             --primary: #1e6b37;
@@ -23,7 +26,7 @@
             --accent-hover: #f57f17;
             --bg-body: #f8fafc;
             --surface: #ffffff;
-            --text-main: #1e293b;
+            --text-main: #0f172a;
             --text-muted: #64748b;
             --border-color: #e2e8f0;
             --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
@@ -31,6 +34,16 @@
             --shadow-lg: 0 20px 30px -10px rgba(0,0,0,0.12);
             --radius-md: 16px;
             --radius-lg: 24px;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #0f172a;
+            --surface: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --glass-bg: rgba(15, 23, 42, 0.85);
         }
 
         * {
@@ -46,17 +59,11 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
 
         .container {
             width: 90%;
@@ -64,9 +71,7 @@
             margin: auto;
         }
 
-        section {
-            padding: 100px 0;
-        }
+        section { padding: 100px 0; }
 
         /* =========================
            NAVBAR (GLASSMORPHISM)
@@ -76,12 +81,10 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(30, 107, 55, 0.95);
+            background: rgba(30, 107, 55, 0.92);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             z-index: 999;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
         }
 
         .navbar {
@@ -98,18 +101,13 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            letter-spacing: -0.5px;
         }
 
-        /* GANTI IKON LOKASI JADI IKON RUMAH/DESA */
-        .logo i {
-            color: var(--accent);
-            font-size: 26px;
-        }
+        .logo i { color: var(--accent); font-size: 26px; }
 
         .menu {
             display: flex;
-            gap: 30px;
+            gap: 25px;
             align-items: center;
         }
 
@@ -118,27 +116,26 @@
             font-weight: 500;
             font-size: 15px;
             transition: all 0.3s ease;
-            position: relative;
         }
 
-        .menu a::after {
-            content: '';
-            position: absolute;
-            width: 0%;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
+        .menu a:hover { color: var(--accent); }
 
-        .menu a:hover {
+        .theme-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
             color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: 0.3s;
         }
 
-        .menu a:hover::after {
-            width: 100%;
-        }
+        .theme-btn:hover { background: rgba(255, 255, 255, 0.3); }
 
         .menu-toggle {
             display: none;
@@ -148,10 +145,10 @@
         }
 
         /* =========================
-           HERO SECTION
+           HERO SECTION WITH BLOB
         ========================= */
         .hero {
-            min-height: 90vh;
+            min-height: 95vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -163,15 +160,22 @@
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
+        .blob {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(251, 192, 45, 0.15) 0%, transparent 50%);
-            pointer-events: none;
+            width: 350px;
+            height: 350px;
+            background: rgba(251, 192, 45, 0.2);
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: floating 8s infinite alternate;
+        }
+
+        .blob-1 { top: 10%; left: -50px; }
+        .blob-2 { bottom: 10%; right: -50px; background: rgba(255, 255, 255, 0.15); }
+
+        @keyframes floating {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(30px) scale(1.1); }
         }
 
         .hero-content {
@@ -188,7 +192,7 @@
             gap: 8px;
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
-            padding: 8px 18px;
+            padding: 8px 20px;
             border-radius: 50px;
             font-size: 14px;
             font-weight: 600;
@@ -198,18 +202,17 @@
         }
 
         .hero h1 {
-            font-size: 52px;
+            font-size: 56px;
             font-weight: 800;
             line-height: 1.15;
             margin-bottom: 20px;
-            letter-spacing: -1px;
+            letter-spacing: -1.5px;
         }
 
         .hero p {
             font-size: 18px;
             color: rgba(255, 255, 255, 0.88);
             margin-bottom: 40px;
-            font-weight: 400;
         }
 
         .button-group {
@@ -252,12 +255,49 @@
         .btn-outline:hover {
             background: white;
             color: var(--primary-dark);
-            border-color: white;
             transform: translateY(-3px);
         }
 
         /* =========================
-           HEADINGS
+           COUNTER STATS SECTION
+        ========================= */
+        .stats-wrapper {
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            background: var(--surface);
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* =========================
+           HEADINGS & CARDS
         ========================= */
         .section-header {
             text-align: center;
@@ -267,7 +307,7 @@
         .title {
             font-size: 36px;
             font-weight: 800;
-            color: var(--primary-dark);
+            color: var(--text-main);
             letter-spacing: -0.5px;
             margin-bottom: 12px;
         }
@@ -279,9 +319,6 @@
             margin: auto;
         }
 
-        /* =========================
-           CARDS & GRID
-        ========================= */
         .card {
             background: var(--surface);
             border-radius: var(--radius-lg);
@@ -294,7 +331,7 @@
         .card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-lg);
-            border-color: transparent;
+            border-color: var(--primary-light);
         }
 
         .grid {
@@ -304,13 +341,9 @@
         }
 
         /* =========================
-           PETA SECTION
+           MAPS & GALLERY
         ========================= */
-        .map-card {
-            overflow: hidden;
-            padding: 16px;
-        }
-
+        .map-card { padding: 16px; }
         .map-wrapper {
             position: relative;
             border-radius: var(--radius-md);
@@ -318,174 +351,49 @@
             cursor: pointer;
         }
 
-        .map-wrapper img {
-            width: 100%;
-            height: auto;
-            transition: transform 0.5s ease;
-        }
-
+        .map-wrapper img { width: 100%; transition: 0.5s; }
         .map-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(17, 66, 33, 0.4);
+            background: rgba(17, 66, 33, 0.5);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: 0.3s;
             color: white;
             font-weight: 600;
-            gap: 8px;
         }
 
-        .map-wrapper:hover img {
-            transform: scale(1.03);
-        }
+        .map-wrapper:hover img { transform: scale(1.03); }
+        .map-wrapper:hover .map-overlay { opacity: 1; }
 
-        .map-wrapper:hover .map-overlay {
-            opacity: 1;
-        }
-
-        .download-action {
-            margin-top: 24px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        /* =========================
-           GOOGLE MAPS CONTAINER
-        ========================= */
         .gmaps-container {
             width: 100%;
-            height: 450px;
+            height: 420px;
             border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: var(--shadow-md);
             border: 1px solid var(--border-color);
         }
 
-        .gmaps-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+        .gmaps-container iframe { width: 100%; height: 100%; border: 0; }
 
-        /* =========================
-           PROFIL SECTION
-        ========================= */
-        .profile-container {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .profile-text p {
-            color: var(--text-muted);
-            margin-bottom: 24px;
-            font-size: 16px;
-        }
-
-        .profile-list {
-            list-style: none;
-            display: grid;
-            gap: 16px;
-        }
-
-        .profile-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            color: var(--text-main);
-            font-weight: 500;
-        }
-
-        .profile-list i {
-            color: var(--primary);
-            font-size: 20px;
-            margin-top: 2px;
-        }
-
-        .profile-img-wrapper img {
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            width: 100%;
-            object-fit: cover;
-        }
-
-        /* =========================
-           INFORMASI & POTENSI
-        ========================= */
-        .icon-box {
-            width: 60px;
-            height: 60px;
-            background: rgba(30, 107, 55, 0.1);
-            color: var(--primary);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .info-card h3, .potensi-card h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .info-card p, .potensi-card p {
-            color: var(--text-muted);
-            font-size: 15px;
-        }
-
-        /* =========================
-           GALERI SECTION
-        ========================= */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
 
         .gallery-item {
-            position: relative;
+            height: 240px;
             border-radius: var(--radius-md);
             overflow: hidden;
-            height: 250px;
+            position: relative;
             cursor: pointer;
-            box-shadow: var(--shadow-sm);
         }
 
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-            display: flex;
-            align-items: flex-end;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            color: white;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.08);
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .gallery-item:hover img { transform: scale(1.08); }
 
         /* =========================
            FOOTER
@@ -494,155 +402,37 @@
             background: var(--primary-dark);
             color: white;
             padding: 80px 0 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .footer-content {
             text-align: center;
-            max-width: 600px;
-            margin: auto;
-        }
-
-        .footer-content h2 {
-            font-size: 28px;
-            font-weight: 800;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .footer-content p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 15px;
         }
 
         .copyright {
-            margin-top: 50px;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.5);
         }
 
-        /* =========================
-           LIGHTBOX POPUP
-        ========================= */
+        /* LIGHTBOX */
         #popup {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            justify-content: center;
-            align-items: center;
+            background: rgba(0,0,0,0.9);
             z-index: 10000;
-            padding: 20px;
-            animation: fadeIn 0.3s ease;
-        }
-
-        #popup img {
-            max-width: 90%;
-            max-height: 85vh;
-            border-radius: var(--radius-md);
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-            animation: zoomIn 0.3s ease;
-        }
-
-        #close {
-            position: absolute;
-            top: 25px;
-            right: 30px;
-            font-size: 32px;
-            color: white;
-            cursor: pointer;
-            width: 48px;
-            height: 48px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            transition: background 0.3s ease;
+            align-items: center;
+            padding: 20px;
         }
 
-        #close:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* =========================
-           BACK TO TOP
-        ========================= */
-        #topBtn {
-            position: fixed;
-            right: 30px;
-            bottom: 30px;
-            width: 50px;
-            height: 50px;
-            border: none;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            display: none;
-            box-shadow: var(--shadow-lg);
-            z-index: 99;
-            transition: all 0.3s ease;
-        }
-
-        #topBtn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-4px);
-        }
-
-        /* =========================
-           ANIMATIONS & RESPONSIVE
-        ========================= */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes zoomIn {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
+        #popup img { max-width: 90%; max-height: 85vh; border-radius: 12px; }
+        #close { position: absolute; top: 20px; right: 30px; color: white; font-size: 35px; cursor: pointer; }
 
         @media(max-width: 900px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .menu {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--primary-dark);
-                flex-direction: column;
-                padding: 20px 0;
-                gap: 20px;
-                display: none;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            }
-
-            .menu.active {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .profile-container {
-                grid-template-columns: 1fr;
-            }
-
-            .title {
-                font-size: 28px;
-            }
+            .hero h1 { font-size: 38px; }
+            .menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--primary-dark); flex-direction: column; padding: 20px; }
+            .menu.active { display: flex; }
+            .menu-toggle { display: block; }
         }
     </style>
 </head>
@@ -652,19 +442,21 @@
     <!-- NAVBAR -->
     <nav>
         <div class="container navbar">
-            <!-- IKON DITUKAR MENJADI RUMAH DESA TERPADU -->
             <a href="#" class="logo">
                 <i class="ri-home-4-fill"></i> Desa Klegen
             </a>
-            <div class="menu-toggle" id="menuToggle">
-                <i class="ri-menu-line"></i>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="theme-btn" id="themeToggle" title="Mode Gelap/Terang">
+                    <i class="ri-moon-line"></i>
+                </button>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="ri-menu-line"></i>
+                </div>
             </div>
             <div class="menu" id="navMenu">
                 <a href="#beranda">Beranda</a>
                 <a href="#peta">Peta</a>
-                <a href="#google-maps">Google Maps</a>
                 <a href="#profil">Profil</a>
-                <a href="#informasi">Informasi</a>
                 <a href="#potensi">Potensi</a>
                 <a href="#galeri">Galeri</a>
             </div>
@@ -673,122 +465,70 @@
 
     <!-- HERO SECTION -->
     <section class="hero" id="beranda">
-        <div class="container hero-content">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="container hero-content" data-aos="fade-up">
             <div class="badge">
-                <i class="ri-sparkling-fill"></i> Portal Informasi Geografis Digital
+                <i class="ri-sparkling-fill"></i> Portal Informasi Geografis v3.0
             </div>
             <h1>Peta Administrasi Digital Desa Klegen</h1>
-            <p>Sistem Informasi Geografis berbasis web untuk mempermudah pemetaan wilayah, eksplorasi potensi lokal, serta penyajian data administratif Desa Klegen secara akurat.</p>
+            <p>Pusat informasi pemetaan wilayah, data demografi, serta potensi ekonomi lokal Desa Klegen, Kecamatan Grabag, Kabupaten Magelang.</p>
             <div class="button-group">
                 <a href="#peta" class="btn btn-primary">
-                    <i class="ri-map-2-line"></i> Lihat Peta Desa
+                    <i class="ri-map-2-line"></i> Eksplorasi Peta
                 </a>
                 <a href="https://maps.google.com/?q=Desa+Klegen+Grabag+Magelang" target="_blank" class="btn btn-outline">
-                    <i class="ri-compass-3-line"></i> Buka Google Maps
+                    <i class="ri-compass-3-line"></i> Google Maps
                 </a>
             </div>
         </div>
     </section>
+
+    <!-- STATS COUNTER -->
+    <div class="container stats-wrapper" data-aos="zoom-in">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number" data-target="3">3</div>
+                <div class="stat-label">Dusun Wilayah</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="100">100%</div>
+                <div class="stat-label">Pemetaan Digital</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="2">2</div>
+                <div class="stat-label">Sektor Potensi Utama</div>
+            </div>
+        </div>
+    </div>
 
     <!-- PETA SECTION -->
     <section id="peta">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-aos="fade-up">
                 <h2 class="title">🗺️ Peta Administrasi Desa</h2>
-                <p class="subtitle">Klik gambar peta di bawah ini untuk memperbesar dan melihat detail wilayah secara menyeluruh.</p>
+                <p class="subtitle">Klik pada gambar peta untuk resolusi tinggi dan pratinjau penuh.</p>
             </div>
-            <div class="card map-card">
+            <div class="card map-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="map-wrapper" onclick="bukaGambar('Desa klegen.png')">
                     <img src="Desa klegen.png" alt="Peta Desa Klegen">
                     <div class="map-overlay">
-                        <i class="ri-zoom-in-line"></i> Perbesar Peta
-                    </div>
-                </div>
-                <div class="download-action">
-                    <a href="Desa klegen.png" download class="btn btn-primary">
-                        <i class="ri-download-cloud-2-line"></i> Unduh Gambar Peta High-Res
-                    </a>
-                    <a href="https://maps.google.com/?q=Desa+Klegen+Grabag+Magelang" target="_blank" class="btn btn-outline" style="color: var(--primary-dark); border-color: var(--border-color);">
-                        <i class="ri-external-link-line"></i> Buka di Google Maps App
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- GOOGLE MAPS INTERAKTIF SECTION -->
-    <section id="google-maps" style="padding-top: 0;">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="title">📍 Lokasi Interaktif Google Maps</h2>
-                <p class="subtitle">Navigasi langsung wilayah Desa Klegen, Grabag, Magelang melalui peta digital di bawah ini.</p>
-            </div>
-            <div class="gmaps-container">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15822.46328325324!2d110.31!3d-7.37!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a7e3cf4d88e0b%3A0x5027a76e356ed60!2sKlegen%2C%20Grabag%2C%20Magelang%20Regency%2C%20Central%20Java!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROFIL SECTION -->
-    <section id="profil">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="title">🏡 Profil Wilayah</h2>
-                <p class="subtitle">Gambaran umum dan letak administratif Desa Klegen.</p>
-            </div>
-            <div class="card">
-                <div class="profile-container">
-                    <div class="profile-text">
-                        <p>Desa Klegen berlokasi di Kecamatan Grabag, Kabupaten Magelang, Provinsi Jawa Tengah. Platform digital ini dikembangkan untuk meningkatkan transparansi tata ruang serta mempermudah akses informasi geospasial bagi warga masyarakat maupun pihak luar.</p>
-                        <ul class="profile-list">
-                            <li><i class="ri-checkbox-circle-fill"></i> <strong>Kecamatan:</strong> Grabag</li>
-                            <li><i class="ri-checkbox-circle-fill"></i> <strong>Kabupaten:</strong> Magelang</li>
-                            <li><i class="ri-checkbox-circle-fill"></i> <strong>Provinsi:</strong> Jawa Tengah</li>
-                            <li><i class="ri-checkbox-circle-fill"></i> <strong>Wilayah Dusun:</strong> Krajan, Jlegong, Gegunung</li>
-                            <li><i class="ri-checkbox-circle-fill"></i> <strong>Sektor Sektor Utama:</strong> Pertanian Organik & Peternakan</li>
-                        </ul>
-                    </div>
-                    <div class="profile-img-wrapper">
-                        <img src="Desa klegen.png" alt="Profil Desa Klegen">
+                        <i class="ri-zoom-in-line"></i> Perbesar Gambar Peta
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- INFORMASI SECTION -->
-    <section id="informasi">
+    <!-- GOOGLE MAPS SECTION -->
+    <section id="google-maps" style="padding-top:0;">
         <div class="container">
-            <div class="section-header">
-                <h2 class="title">📊 Data Demografi & Administrasi</h2>
-                <p class="subtitle">Rangkuman data struktur administratif Desa Klegen.</p>
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="title">📍 Lokasi GPS Interaktif</h2>
+                <p class="subtitle">Akses lokasi presisi Desa Klegen secara langsung via Google Maps.</p>
             </div>
-            <div class="grid">
-                <div class="card info-card">
-                    <div class="icon-box"><i class="ri-community-line"></i></div>
-                    <h3>3 Dusun Utama</h3>
-                    <p>Terdiri dari Dusun Krajan, Dusun Jlegong, dan Dusun Gegunung.</p>
-                </div>
-                <div class="card info-card">
-                    <div class="icon-box"><i class="ri-building-2-line"></i></div>
-                    <h3>Kecamatan</h3>
-                    <p>Berada dalam naungan wilayah administratif Kecamatan Grabag.</p>
-                </div>
-                <div class="card info-card">
-                    <div class="icon-box"><i class="ri-government-line"></i></div>
-                    <h3>Kabupaten</h3>
-                    <p>Bagian terintegrasi dari wilayah Kabupaten Magelang, Jawa Tengah.</p>
-                </div>
-                <div class="card info-card">
-                    <div class="icon-box"><i class="ri-plant-line"></i></div>
-                    <h3>Komoditas Utama</h3>
-                    <p>Fokus pada sektor Pertanian produktif dan Peternakan terpadu.</p>
-                </div>
+            <div class="gmaps-container" data-aos="fade-up">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15822.46328325324!2d110.31!3d-7.37!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a7e3cf4d88e0b%3A0x5027a76e356ed60!2sKlegen%2C%20Grabag%2C%20Magelang%20Regency%2C%20Central%20Java!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" loading="lazy"></iframe>
             </div>
         </div>
     </section>
@@ -796,20 +536,20 @@
     <!-- POTENSI SECTION -->
     <section id="potensi">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-aos="fade-up">
                 <h2 class="title">🌾 Potensi Unggulan</h2>
-                <p class="subtitle">Dua fondasi utama roda perekonomian masyarakat Desa Klegen.</p>
+                <p class="subtitle">Sektor penggerak ekonomi warga masyarakat Desa Klegen.</p>
             </div>
             <div class="grid">
-                <div class="card potensi-card">
-                    <div class="icon-box"><i class="ri-seedling-line"></i></div>
-                    <h3>Sektor Pertanian</h3>
-                    <p>Lahan pertanian yang subur menjadi penopang utama ekonomi lokal dengan berbagai hasil komoditas pangan berkualitas tinggi yang dikembangkan secara berkelanjutan.</p>
+                <div class="card" data-aos="fade-right">
+                    <i class="ri-plant-line" style="font-size:40px; color:var(--primary);"></i>
+                    <h3 style="margin:15px 0 10px;">Pertanian Organik</h3>
+                    <p style="color:var(--text-muted);">Lahan pertanian produktif yang melimpah mendukung hasil tani beras, sayur, dan tanaman pangan lokal.</p>
                 </div>
-                <div class="card potensi-card">
-                    <div class="icon-box"><i class="ri-footprint-line"></i></div>
-                    <h3>Sektor Peternakan</h3>
-                    <p>Aktivitas peternakan warga yang berkembang pesat menjadi potensi ekonomi bernilai tinggi yang terus diberdayakan demi meningkatkan kesejahteraan desa.</p>
+                <div class="card" data-aos="fade-left">
+                    <i class="ri-footprint-line" style="font-size:40px; color:var(--primary);"></i>
+                    <h3 style="margin:15px 0 10px;">Peternakan Terpadu</h3>
+                    <p style="color:var(--text-muted);">Sektor peternakan rakyat yang terus tumbuh sebagai salah satu pilar pendapatan utama warga desa.</p>
                 </div>
             </div>
         </div>
@@ -818,108 +558,67 @@
     <!-- GALERI SECTION -->
     <section id="galeri">
         <div class="container">
-            <div class="section-header">
-                <h2 class="title">📸 Galeri Dokumentasi</h2>
-                <p class="subtitle">Kumpulan dokumentasi peta wilayah dan potensi Desa Klegen.</p>
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="title">📸 Galeri Visual</h2>
             </div>
-            <div class="gallery-grid">
+            <div class="gallery-grid" data-aos="fade-up">
                 <div class="gallery-item" onclick="bukaGambar('Desa klegen.png')">
-                    <img src="Desa klegen.png" alt="Galeri 1">
-                    <div class="gallery-overlay"><i class="ri-search-eye-line"></i> Visual Peta Krajan</div>
+                    <img src="Desa klegen.png" alt="Peta Krajan">
                 </div>
                 <div class="gallery-item" onclick="bukaGambar('Desa klegen.png')">
-                    <img src="Desa klegen.png" alt="Galeri 2">
-                    <div class="gallery-overlay"><i class="ri-search-eye-line"></i> Visual Peta Jlegong</div>
+                    <img src="Desa klegen.png" alt="Peta Jlegong">
                 </div>
                 <div class="gallery-item" onclick="bukaGambar('Desa klegen.png')">
-                    <img src="Desa klegen.png" alt="Galeri 3">
-                    <div class="gallery-overlay"><i class="ri-search-eye-line"></i> Visual Peta Gegunung</div>
-                </div>
-                <div class="gallery-item" onclick="bukaGambar('Desa klegen.png')">
-                    <img src="Desa klegen.png" alt="Galeri 4">
-                    <div class="gallery-overlay"><i class="ri-search-eye-line"></i> Batas Wilayah Desa</div>
+                    <img src="Desa klegen.png" alt="Peta Gegunung">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer id="kontak">
+    <footer>
         <div class="container">
-            <div class="footer-content">
-                <h2><i class="ri-home-4-fill"></i> Desa Klegen</h2>
-                <p>Kecamatan Grabag • Kabupaten Magelang • Jawa Tengah</p>
-                <div class="copyright">
-                    <p>© Tim Kuliah Kerja Nyata (KKN) • Inisiatif Peta Digital Desa</p>
-                </div>
+            <h2>🏡 Desa Klegen</h2>
+            <p>Kecamatan Grabag • Kabupaten Magelang • Jawa Tengah</p>
+            <div class="copyright">
+                <p>© Tim Kuliah Kerja Nyata (KKN) • Portal Geografis Digital Desa</p>
             </div>
         </div>
     </footer>
 
-    <!-- POPUP LIGHTBOX -->
+    <!-- LIGHTBOX -->
     <div id="popup">
-        <span id="close" onclick="tutupGambar()"><i class="ri-close-line"></i></span>
-        <img id="popupImage" src="" alt="Preview Gambar">
+        <span id="close" onclick="tutupGambar()">&times;</span>
+        <img id="popupImage" src="">
     </div>
 
-    <!-- BACK TO TOP BUTTON -->
-    <button id="topBtn" onclick="scrollAtas()"><i class="ri-arrow-up-line"></i></button>
-
-    <!-- JAVASCRIPT -->
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // ===============================
-        // NAVBAR MOBILE TOGGLE
-        // ===============================
-        const menuToggle = document.getElementById("menuToggle");
-        const navMenu = document.getElementById("navMenu");
+        // Init AOS Animation
+        AOS.init({ duration: 800, once: true });
 
-        menuToggle.addEventListener("click", () => {
-            navMenu.classList.toggle("active");
+        // Dark/Light Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            themeToggle.innerHTML = newTheme === 'dark' ? '<i class="ri-sun-line"></i>' : '<i class="ri-moon-line"></i>';
         });
 
-        document.querySelectorAll(".menu a").forEach(link => {
-            link.addEventListener("click", () => {
-                navMenu.classList.remove("active");
-            });
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('navMenu').classList.toggle('active');
         });
 
-        // ===============================
-        // LIGHTBOX GAMBAR
-        // ===============================
+        // Lightbox
         function bukaGambar(src){
             document.getElementById("popup").style.display = "flex";
             document.getElementById("popupImage").src = src;
         }
-
         function tutupGambar(){
             document.getElementById("popup").style.display = "none";
-        }
-
-        window.onclick = function(event){
-            let popup = document.getElementById("popup");
-            if(event.target == popup){
-                popup.style.display = "none";
-            }
-        }
-
-        // ===============================
-        // TOMBOL SCROLL TO TOP
-        // ===============================
-        let tombol = document.getElementById("topBtn");
-
-        window.onscroll = function(){
-            if(document.body.scrollTop > 300 || document.documentElement.scrollTop > 300){
-                tombol.style.display = "block";
-            } else {
-                tombol.style.display = "none";
-            }
-        }
-
-        function scrollAtas(){
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
         }
     </script>
 </body>
