@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peta Administrasi Desa Klegen</title>
 
-    <!-- Google Fonts & Remixicons (Ikon Modern) -->
+    <!-- Google Fonts & Remixicons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -76,7 +76,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(30, 107, 55, 0.9);
+            background: rgba(30, 107, 55, 0.95);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             z-index: 999;
@@ -101,6 +101,7 @@
             letter-spacing: -0.5px;
         }
 
+        /* GANTI IKON LOKASI JADI IKON RUMAH/DESA */
         .logo i {
             color: var(--accent);
             font-size: 26px;
@@ -349,6 +350,26 @@
             margin-top: 24px;
             display: flex;
             justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* =========================
+           GOOGLE MAPS CONTAINER
+        ========================= */
+        .gmaps-container {
+            width: 100%;
+            height: 450px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .gmaps-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         /* =========================
@@ -631,8 +652,9 @@
     <!-- NAVBAR -->
     <nav>
         <div class="container navbar">
+            <!-- IKON DITUKAR MENJADI RUMAH DESA TERPADU -->
             <a href="#" class="logo">
-                <i class="ri-map-pin-2-fill"></i> Desa Klegen
+                <i class="ri-home-4-fill"></i> Desa Klegen
             </a>
             <div class="menu-toggle" id="menuToggle">
                 <i class="ri-menu-line"></i>
@@ -640,11 +662,11 @@
             <div class="menu" id="navMenu">
                 <a href="#beranda">Beranda</a>
                 <a href="#peta">Peta</a>
+                <a href="#google-maps">Google Maps</a>
                 <a href="#profil">Profil</a>
                 <a href="#informasi">Informasi</a>
                 <a href="#potensi">Potensi</a>
                 <a href="#galeri">Galeri</a>
-                <a href="#kontak">Kontak</a>
             </div>
         </div>
     </nav>
@@ -661,8 +683,8 @@
                 <a href="#peta" class="btn btn-primary">
                     <i class="ri-map-2-line"></i> Lihat Peta Desa
                 </a>
-                <a href="Desa klegen.png" download class="btn btn-outline">
-                    <i class="ri-download-2-line"></i> Unduh File Peta
+                <a href="https://maps.google.com/?q=Desa+Klegen+Grabag+Magelang" target="_blank" class="btn btn-outline">
+                    <i class="ri-compass-3-line"></i> Buka Google Maps
                 </a>
             </div>
         </div>
@@ -686,7 +708,28 @@
                     <a href="Desa klegen.png" download class="btn btn-primary">
                         <i class="ri-download-cloud-2-line"></i> Unduh Gambar Peta High-Res
                     </a>
+                    <a href="https://maps.google.com/?q=Desa+Klegen+Grabag+Magelang" target="_blank" class="btn btn-outline" style="color: var(--primary-dark); border-color: var(--border-color);">
+                        <i class="ri-external-link-line"></i> Buka di Google Maps App
+                    </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GOOGLE MAPS INTERAKTIF SECTION -->
+    <section id="google-maps" style="padding-top: 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="title">📍 Lokasi Interaktif Google Maps</h2>
+                <p class="subtitle">Navigasi langsung wilayah Desa Klegen, Grabag, Magelang melalui peta digital di bawah ini.</p>
+            </div>
+            <div class="gmaps-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15822.46328325324!2d110.31!3d-7.37!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a7e3cf4d88e0b%3A0x5027a76e356ed60!2sKlegen%2C%20Grabag%2C%20Magelang%20Regency%2C%20Central%20Java!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
     </section>
@@ -732,7 +775,7 @@
                     <p>Terdiri dari Dusun Krajan, Dusun Jlegong, dan Dusun Gegunung.</p>
                 </div>
                 <div class="card info-card">
-                    <div class="icon-box"><i class="ri-map-pin-line"></i></div>
+                    <div class="icon-box"><i class="ri-building-2-line"></i></div>
                     <h3>Kecamatan</h3>
                     <p>Berada dalam naungan wilayah administratif Kecamatan Grabag.</p>
                 </div>
@@ -804,10 +847,10 @@
     <footer id="kontak">
         <div class="container">
             <div class="footer-content">
-                <h2><i class="ri-map-pin-2-fill"></i> Desa Klegen</h2>
+                <h2><i class="ri-home-4-fill"></i> Desa Klegen</h2>
                 <p>Kecamatan Grabag • Kabupaten Magelang • Jawa Tengah</p>
                 <div class="copyright">
-                    <p>© 2026 Tim Kuliah Kerja Nyata (KKN) • Inisiatif Peta Digital Desa</p>
+                    <p>© Tim Kuliah Kerja Nyata (KKN) • Inisiatif Peta Digital Desa</p>
                 </div>
             </div>
         </div>
@@ -834,7 +877,6 @@
             navMenu.classList.toggle("active");
         });
 
-        // Tutup menu saat link diklik (di mobile)
         document.querySelectorAll(".menu a").forEach(link => {
             link.addEventListener("click", () => {
                 navMenu.classList.remove("active");
