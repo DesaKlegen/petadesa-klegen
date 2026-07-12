@@ -1,28 +1,252 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peta Desa Klegen</title>
-    <style>
-        body{
-            font-family: Arial, sans-serif;
-            text-align:center;
-            margin:30px;
-            background:#f5f5f5;
-        }
-        img{
-            max-width:90%;
-            height:auto;
-            border:1px solid #999;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Peta Desa Klegen</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#eef4ef;
+    color:#333;
+}
+
+/* HEADER */
+
+header{
+    background:linear-gradient(135deg,#2e7d32,#43a047);
+    color:white;
+    text-align:center;
+    padding:35px 20px;
+    box-shadow:0 4px 15px rgba(0,0,0,.2);
+}
+
+header h1{
+    font-size:36px;
+}
+
+header p{
+    margin-top:10px;
+    opacity:.9;
+}
+
+/* CONTAINER */
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* CARD */
+
+.card{
+    background:white;
+    margin-top:35px;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+/* IMAGE */
+
+.image-box{
+    overflow:hidden;
+    border-radius:15px;
+}
+
+.image-box img{
+    width:100%;
+    transition:.4s;
+    cursor:pointer;
+}
+
+.image-box img:hover{
+    transform:scale(1.03);
+}
+
+/* BUTTON */
+
+.button{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 24px;
+    background:#2e7d32;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.button:hover{
+    background:#1b5e20;
+}
+
+/* INFO */
+
+.info{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.box{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.box h3{
+    color:#2e7d32;
+    margin-bottom:10px;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:40px;
+    background:#2e7d32;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+/* LIGHTBOX */
+
+#popup{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.9);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+#popup img{
+    width:90%;
+    max-width:1200px;
+    border-radius:10px;
+}
+
+#close{
+    position:absolute;
+    top:20px;
+    right:35px;
+    color:white;
+    font-size:40px;
+    cursor:pointer;
+}
+
+</style>
+
 </head>
+
 <body>
 
-<h1>Peta Desa Klegen</h1>
+<header>
 
-<img src="Desa klegen.png" alt="Peta Desa Klegen">
+<h1>🗺️ Peta Desa Klegen</h1>
+
+<p>
+Website Informasi Desa Klegen
+<br>
+Kuliah Kerja Nyata (KKN)
+</p>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2 style="margin-bottom:20px;">Peta Administrasi Desa</h2>
+
+<div class="image-box">
+
+<img src="Desa klegen.png" alt="Peta Desa Klegen" onclick="buka()">
+
+</div>
+
+<a class="button" href="Desa klegen.png" download>
+⬇ Download Peta
+</a>
+
+</div>
+
+<div class="info">
+
+<div class="box">
+<h3>📍 Tentang Desa</h3>
+<p>
+Desa Klegen merupakan salah satu desa yang memiliki potensi di bidang pertanian, UMKM, dan kehidupan masyarakat yang aktif.
+</p>
+</div>
+
+<div class="box">
+<h3>🗺️ Fungsi Peta</h3>
+<p>
+Peta ini digunakan sebagai media informasi wilayah Desa Klegen sehingga masyarakat dapat mengetahui batas wilayah dan lokasi penting di desa.
+</p>
+</div>
+
+<div class="box">
+<h3>🎓 Program KKN</h3>
+<p>
+Website ini dikembangkan sebagai media digitalisasi informasi desa oleh mahasiswa Kuliah Kerja Nyata (KKN).
+</p>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 Tim KKN Desa Klegen
+
+</footer>
+
+<div id="popup">
+
+<span id="close" onclick="tutup()">&times;</span>
+
+<img src="Desa klegen.png">
+
+</div>
+
+<script>
+
+function buka(){
+document.getElementById("popup").style.display="flex";
+}
+
+function tutup(){
+document.getElementById("popup").style.display="none";
+}
+
+window.onclick=function(e){
+if(e.target==document.getElementById("popup")){
+tutup();
+}
+}
+
+</script>
 
 </body>
 </html>
