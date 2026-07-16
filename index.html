@@ -16,8 +16,8 @@
     <style>
         :root {
             --brand-primary: #059669;
-            --brand-dark: #064e3b;
-            --brand-light: #ecfdf5;
+            --brand-dark: #022c22;
+            --brand-emerald: #064e3b;
             --brand-accent: #10b981;
             --bg-body: #f8fafc;
             --surface-card: #ffffff;
@@ -43,9 +43,6 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(5, 150, 105, 0.05) 0%, transparent 40%);
         }
 
         a { text-decoration: none; color: inherit; }
@@ -60,7 +57,7 @@
         section { padding: 90px 0; }
 
         /* =========================
-           NAVBAR MODERN LIGHT
+           NAVBAR MODERN GLASS
         ========================= */
         header {
             position: fixed;
@@ -69,14 +66,14 @@
             transform: translateX(-50%);
             width: 90%;
             max-width: 1160px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
             z-index: 1000;
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 100px;
             padding: 12px 28px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
         .navbar {
@@ -89,7 +86,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            color: var(--brand-dark);
+            color: #ffffff;
             font-weight: 800;
             font-size: 19px;
             letter-spacing: -0.5px;
@@ -98,13 +95,13 @@
         .logo-icon {
             width: 38px;
             height: 38px;
-            background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+            background: linear-gradient(135deg, var(--brand-accent), #34d399);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            color: var(--brand-dark);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
         }
 
         .nav-links {
@@ -115,45 +112,67 @@
         }
 
         .nav-links a {
-            color: var(--text-sub);
+            color: rgba(255, 255, 255, 0.85);
             font-size: 14px;
             font-weight: 600;
             transition: all 0.2s ease;
         }
 
         .nav-links a:hover {
-            color: var(--brand-primary);
+            color: #34d399;
         }
 
         .menu-toggle {
             display: none;
             background: none;
             border: none;
-            color: var(--brand-dark);
+            color: #ffffff;
             cursor: pointer;
         }
 
         /* =========================
-           HERO SECTION LIGHT
+           HERO SECTION (ELEGANT DARK EMERALD)
         ========================= */
         .hero {
-            padding: 180px 0 90px;
+            background: linear-gradient(135deg, #022c22 0%, #064e3b 50%, #047857 100%);
+            padding: 190px 0 120px;
             text-align: center;
             position: relative;
+            color: #ffffff;
+            overflow: hidden;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: 0 20px 40px rgba(2, 44, 34, 0.25);
+        }
+
+        /* Elemen Efek Glow di Background Hero */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 18px;
+            padding: 8px 20px;
             border-radius: 100px;
-            background: var(--brand-light);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            color: var(--brand-primary);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #a7f3d0;
             font-size: 13px;
             font-weight: 700;
             margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-title {
@@ -162,21 +181,25 @@
             line-height: 1.15;
             margin-bottom: 24px;
             letter-spacing: -1.5px;
-            color: var(--brand-dark);
+            color: #ffffff;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-title span {
-            background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+            background: linear-gradient(135deg, #a7f3d0 0%, #34d399 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero-subtitle {
             font-size: 18px;
-            color: var(--text-sub);
+            color: rgba(255, 255, 255, 0.8);
             max-width: 680px;
             margin: 0 auto 40px;
             font-weight: 400;
+            position: relative;
+            z-index: 1;
         }
 
         .btn-group {
@@ -184,6 +207,8 @@
             justify-content: center;
             gap: 16px;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
 
         .btn {
@@ -199,31 +224,31 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+            background: linear-gradient(135deg, #10b981, #059669);
             color: #ffffff;
-            box-shadow: 0 6px 20px rgba(5, 150, 105, 0.25);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(5, 150, 105, 0.35);
+            box-shadow: 0 12px 30px rgba(16, 185, 129, 0.6);
         }
 
         .btn-secondary {
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
         }
 
         .btn-secondary:hover {
-            border-color: var(--brand-primary);
-            color: var(--brand-primary);
+            background: rgba(255, 255, 255, 0.25);
             transform: translateY(-3px);
         }
 
         /* =========================
-           CARDS & COMPONENTS
+           KONTEN UTAMA (KARTU PUTIH TERANG)
         ========================= */
         .card {
             background: var(--surface-card);
@@ -306,7 +331,7 @@
         .map-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, transparent 60%, rgba(6, 78, 59, 0.7) 100%);
+            background: linear-gradient(180deg, transparent 60%, rgba(6, 78, 59, 0.8) 100%);
             display: flex;
             align-items: flex-end;
             padding: 24px;
@@ -343,7 +368,7 @@
             width: 52px;
             height: 52px;
             border-radius: var(--radius-md);
-            background: var(--brand-light);
+            background: #ecfdf5;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -437,9 +462,10 @@
                 width: 94%;
                 border-radius: 20px;
                 padding: 12px 18px;
+                background: rgba(2, 44, 34, 0.85);
             }
 
-            .hero { padding: 140px 0 60px; }
+            .hero { padding: 150px 0 80px; border-radius: 0 0 24px 24px; }
             .hero-title { font-size: 36px; }
             .section-title { font-size: 28px; }
             .menu-toggle { display: block; }
@@ -450,13 +476,13 @@
                 top: 65px;
                 left: 0;
                 width: 100%;
-                background: #ffffff;
+                background: #022c22;
                 flex-direction: column;
                 padding: 24px;
                 gap: 18px;
                 border-radius: 20px;
-                border: 1px solid var(--border-color);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             }
 
             .nav-links.active { display: flex; }
@@ -466,7 +492,7 @@
 
 <body>
 
-    <!-- NAVBAR LIGHT -->
+    <!-- NAVBAR GLASS -->
     <header>
         <div class="navbar">
             <a href="#" class="logo">
@@ -490,7 +516,7 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION DARK EMERALD -->
     <section class="hero" id="beranda">
         <div class="container">
             <div class="hero-badge">
